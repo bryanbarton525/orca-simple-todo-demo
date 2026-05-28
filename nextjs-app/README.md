@@ -1,0 +1,3 @@
+// This is a Next.js app created by go-orca
+// It will be initialized with the standard Next.js structure
+// Please wait while we set up the project...
