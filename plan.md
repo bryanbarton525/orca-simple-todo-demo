@@ -134,3 +134,20 @@ A fully functional todo application that can be opened directly in a browser and
 | ad153716 | ops | Reinstall dependencies with updated package.json | - | Run `npm install` to reinstall dependencies using the updated package.json. Ensure the installation completes successfully without errors. This step is necessary to validate that the updated package.json resolves the validation failure. |
 | 5188b534 | ops | Update package.json with devDependencies and strict JSON format | - | Produce artifact kind `package.json`, name `package.json`. Rewrite the existing package.json to strict JSON format with the following structure:  ```json {   "name": "todo-app",   "version": "0.1.0",   "private": true,   "scripts": {     "test": "eslint .",     "build": "echo 'No build step required for vanilla JS app'"   },   "devDependencies": {     "eslint": "^8.30.0",     "prettier": "^2.8.1"   } } ``` Ensure the file is valid JSON with no comments or prose prefixes. This change will resolve the missing devDependencies error during validation. |
 
+---
+
+## Remediation Cycle 1 — Architect
+
+**Current overview:** Designing a minimal vanilla JavaScript todo application with HTML, CSS, and JavaScript at the repository root. The application will follow a flat structure with no build tools required for runtime execution. The design includes a simple UI for adding, toggling completion, and deleting todo items, along with a README for local execution instructions.
+
+### Remediation Tasks
+
+| ID | Specialty | Title | Depends On | Description |
+|---|---|---|---|---|
+| 206b4609 | backend | Update app.js to use double quotes for all strings | - | Produce artifact kind `javascript`, name `app.js`. Rewrite the existing app.js file to ensure all strings use double quotes instead of single quotes. Ensure the file is self-contained and ready for use with the provided HTML and CSS. This change will resolve the ESLint validation errors related to string quotes. Write this file to the workspace at `/var/lib/go-orca/workspaces/e7fac64a-0373-4e32-9d1d-eae6896aa770/app.js`. |
+| 74c3ead5 | backend | Update script.js to use double quotes for all strings | - | Produce artifact kind `javascript`, name `script.js`. Rewrite the existing script.js file to ensure all strings use double quotes instead of single quotes. Ensure the file is self-contained and ready for use with the provided HTML and CSS. This change will resolve the ESLint validation errors related to string quotes. Write this file to the workspace at `/var/lib/go-orca/workspaces/e7fac64a-0373-4e32-9d1d-eae6896aa770/script.js`. |
+| 777b313e | ops | Update package.json with required npm scripts | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the following scripts:  ```json "scripts": {   "test": "eslint .",   "build": "echo 'No build step required for vanilla JS app'" } ```  Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script errors during validation. |
+| 19b9fb75 | ops | Update package.json with test script | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the 'test' script in strict JSON format. The updated package.json must include the following scripts section: ```json "scripts": {   "test": "eslint ." } ``` Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script error during validation. |
+| db2881e8 | ops | Reinstall dependencies with updated package.json | 19b9fb75 | Run `npm install` to reinstall dependencies using the updated package.json. Ensure the installation completes successfully without errors. This step is necessary to validate that the updated package.json resolves the validation failure. |
+| f75d2b70 | ops | Run npm test to validate ESLint compliance | - | Run `npm test` to validate that the updated JavaScript files comply with the ESLint configuration. Ensure the test passes without any string quote errors. This task will confirm that the remediation resolves the validation failures. |
+
