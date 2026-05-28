@@ -64,3 +64,17 @@ A fully functional todo application that can be opened directly in a browser and
 |---|---|---|---|---|
 | 777b313e | ops | Update package.json with required npm scripts | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the following scripts:  ```json "scripts": {   "test": "eslint .",   "build": "echo 'No build step required for vanilla JS app'" } ```  Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script errors during validation. |
 
+---
+
+## Remediation Cycle 2 — Architect
+
+**Current overview:** Designing a minimal vanilla JavaScript todo application with HTML, CSS, and JavaScript at the repository root. The application will follow a flat structure with no build tools required for runtime execution. The design includes a simple UI for adding, toggling completion, and deleting todo items, along with a README for local execution instructions.
+
+### Remediation Tasks
+
+| ID | Specialty | Title | Depends On | Description |
+|---|---|---|---|---|
+| 7b1572ec | ops | Update package.json to strict JSON format | - | Produce artifact kind `package.json`, name `package.json`. Rewrite the existing package.json to strict JSON format (no comments, no prose prefixes). Ensure the file includes the following structure with devDependencies and scripts:  ```json {   "name": "todo-app",   "version": "0.1.0",   "private": true,   "scripts": {     "test": "eslint .",     "build": "echo 'No build step required for vanilla JS app'"   },   "devDependencies": {     "eslint": "^8.30.0",     "prettier": "^2.8.1"   } } ```  Ensure the file is valid JSON and ready for dependency installation. |
+| 04e9bdf9 | ops | Add ESLint configuration file | - | Produce artifact kind `json`, name `.eslintrc.json`. Create a basic ESLint configuration file to resolve the missing configuration error. Use the following content:  ```json {   "env": {     "browser": true,     "es2021": true   },   "extends": "eslint:recommended",   "parserOptions": {     "ecmaVersion": "latest",     "sourceType": "module"   },   "rules": {     "indent": ["error", 2],     "linebreak-style": ["error", "unix"],     "quotes": ["error", "double"],     "semi": ["error", "always"]   } } ```  Ensure the file is placed in the workspace root and is valid JSON. |
+| 8611f0d4 | ops | Reinstall dependencies with strict JSON package.json | 7b1572ec | Run `npm install` to reinstall dependencies using the updated strict JSON package.json. Ensure the installation completes successfully without lockfile errors. |
+
