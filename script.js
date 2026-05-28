@@ -1,36 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('todo-form');
-  const input = document.getElementById('todo-input');
-  const list = document.getElementById('todo-list');
+const todoInput = document.getElementById("todo-input");
+const addBtn = document.getElementById("add-btn");
+const todoList = document.getElementById("todo-list");
 
-  const createItem = (text) => {
-    const li = document.createElement('li');
-    const span = document.createElement('span');
-    span.textContent = text;
-    li.appendChild(span);
+function renderTodo(item, index) {
+  const li = document.createElement("li");
+  li.textContent = item.text;
+  if (item.completed) {
+    li.style.textDecoration = "line-through";
+  }
 
-    const completeBtn = document.createElement('button');
-    completeBtn.textContent = '✓';
-    completeBtn.onclick = () => {
-      li.classList.toggle('completed');
-    };
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '✕';
-    deleteBtn.onclick = () => {
-      list.removeChild(li);
-    };
-
-    li.appendChild(completeBtn);
-    li.appendChild(deleteBtn);
-    return li;
-  };
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (input.value.trim()) {
-      list.appendChild(createItem(input.value.trim()));
-      input.value = '';
-    }
+  const toggleBtn = document.createElement("button");
+  toggleBtn.textContent = item.completed ? "Undo" : "Done";
+  toggleBtn.addEventListener("click", () => {
+    item.completed = !item.completed;
+    renderTodos();
   });
+
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "Delete";
+  delBtn.addEventListener("click", () => {
+    todos.splice(index, 1);
+    renderTodos();
+  });
+
+  li.appendChild(toggleBtn);
+  li.appendChild(delBtn);
+  return li;
+}
+
+let todos = [];
+
+function renderTodos() {
+  todoList.innerHTML = "";
+  todos.forEach((item, idx) => {
+    todoList.appendChild(renderTodo(item, idx));
+  });
+}
+
+addBtn.addEventListener("click", () => {
+  const text = todoInput.value.trim();
+  if (text !== "") {
+    todos.push({ text, completed: false });
+    todoInput.value = "";
+    renderTodos();
+  }
 });
