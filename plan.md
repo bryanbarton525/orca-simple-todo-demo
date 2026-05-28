@@ -91,3 +91,17 @@ A fully functional todo application that can be opened directly in a browser and
 | 0a2f7201 | ops | Update package.json with build script | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the 'build' script as follows: ```json "scripts": {   "test": "eslint .",   "build": "echo 'No build step required for vanilla JS app'" } ``` Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script error during validation. |
 | ad153716 | ops | Reinstall dependencies with updated package.json | - | Run `npm install` to reinstall dependencies using the updated package.json. Ensure the installation completes successfully without errors. This step is necessary to validate that the updated package.json resolves the validation failure. |
 
+---
+
+## Remediation Cycle 1 — Architect
+
+**Current overview:** Designing a minimal vanilla JavaScript todo application with HTML, CSS, and JavaScript at the repository root. The application will follow a flat structure with no build tools required for runtime execution. The design includes a simple UI for adding, toggling completion, and deleting todo items, along with a README for local execution instructions.
+
+### Remediation Tasks
+
+| ID | Specialty | Title | Depends On | Description |
+|---|---|---|---|---|
+| 777b313e | ops | Update package.json with required npm scripts | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the following scripts:  ```json "scripts": {   "test": "eslint .",   "build": "echo 'No build step required for vanilla JS app'" } ```  Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script errors during validation. |
+| 19b9fb75 | ops | Update package.json with test script | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the 'test' script in strict JSON format. The updated package.json must include the following scripts section: ```json "scripts": {   "test": "eslint ." } ``` Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script error during validation. |
+| db2881e8 | ops | Reinstall dependencies with updated package.json | 19b9fb75 | Run `npm install` to reinstall dependencies using the updated package.json. Ensure the installation completes successfully without errors. This step is necessary to validate that the updated package.json resolves the validation failure. |
+
