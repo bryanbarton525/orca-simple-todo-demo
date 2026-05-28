@@ -1,8 +1,1 @@
-{
-  "name": "todo-app",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "test": "echo \"no tests\""
-  }
-}
+{"name":"todo-app","version":"1.0.0","private":true,"scripts":{"test":"eslint .","build":"echo 'No build step required for vanilla JS app'"}}
