@@ -52,3 +52,15 @@ A fully functional todo application that can be opened directly in a browser and
 | 6e7df649 | ops | Install dependencies and set up tooling | b9fd387b | Run npm install to install devDependencies for ESLint and Prettier. Ensure the package.json is valid JSON and the installation completes successfully. |
 | c251cac0 | writer | Write README.md for local execution | b9fd387b | Produce artifact kind `markdown`, name `README.md`. Write a README explaining how to open the app locally. Include instructions for installing dependencies, linting, formatting, and serving the app. Ensure the README is self-contained and ready for publication. |
 
+---
+
+## Remediation Cycle 1 — Architect
+
+**Current overview:** Designing a minimal vanilla JavaScript todo application with HTML, CSS, and JavaScript at the repository root. The application will follow a flat structure with no build tools required for runtime execution. The design includes a simple UI for adding, toggling completion, and deleting todo items, along with a README for local execution instructions.
+
+### Remediation Tasks
+
+| ID | Specialty | Title | Depends On | Description |
+|---|---|---|---|---|
+| 777b313e | ops | Update package.json with required npm scripts | - | Produce artifact kind `package.json`, name `package.json`. Update the existing package.json to include the following scripts:  ```json "scripts": {   "test": "eslint .",   "build": "echo 'No build step required for vanilla JS app'" } ```  Ensure the file is strict JSON with no comments or prose prefixes. This change will resolve the missing script errors during validation. |
+
