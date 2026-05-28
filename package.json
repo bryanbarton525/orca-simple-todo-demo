@@ -1,1 +1,13 @@
-{"name":"todo-app","version":"0.1.0","description":"Minimal todo app","private":true,"scripts":{"dev":"npx http-server . -p 8080","test":"echo \"No tests\""},"dependencies":{}}
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Minimal todo app",
+  "private": true,
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo \"build completed\""
+  },
+  "devDependencies": {
+    "serve": "^14.0.1"
+  }
+}
