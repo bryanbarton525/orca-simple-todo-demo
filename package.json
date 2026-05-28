@@ -1,13 +1,8 @@
 {
   "name": "todo-app",
   "version": "1.0.0",
-  "description": "Minimal todo app",
   "private": true,
   "scripts": {
-    "dev": "serve .",
-    "build": "echo \"build completed\""
-  },
-  "devDependencies": {
-    "serve": "^14.0.1"
+    "test": "echo \"no tests\""
   }
 }
