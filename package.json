@@ -1,9 +1,1 @@
-{
-  "name": "todo-app",
-  "version": "0.1.0",
-  "description": "Minimal single-page todo app",
-  "private": true,
-  "scripts": {
-    "test": "eslint ."
-  }
-}
+{"name":"todo-app","version":"1.0.0","private":true,"scripts":{"test":"eslint .","build":"echo 'No build step required for vanilla JS app'"}}
