@@ -1,1 +1,27 @@
-{"name":"todo-app","version":"1.0.0","private":true,"scripts":{"test":"eslint .","build":"echo 'No build step required for vanilla JS app'"}}
+{
+  "name": "todo-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "eslint .",
+    "build": "echo 'No build step required for vanilla JS app'"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "prettier": "^2.8.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-unused-vars": "warn"
+    }
+  }
+}
